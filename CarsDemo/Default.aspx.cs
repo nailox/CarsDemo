@@ -34,14 +34,7 @@ namespace CarsDemo
             }
         }
 
-        //public string Manufactorer { get; set; }
-        //public string Model { get; set; }
-        //public string Fuel { get; set; }
-
-        //public DateTime Date { get; set; }
-        //public bool IsNew { get; set; }
-
-        //public int Mileage { get; set; }
+    
         protected void Submit_Click(object sender, EventArgs e)
         {
             string fuel = null;
