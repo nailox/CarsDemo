@@ -56,9 +56,7 @@ namespace CarsDemo
 
             DateTime date = DateTime.Parse(this.Date.Text);
             
-           
-            
-
+       
             int mileage = Convert.ToInt32(this.Mileage.Text);
 
             Car car = new Car(this.Manufacturer.SelectedValue, this.Model.Text, fuel, date, this.IsNew.Checked, mileage);
@@ -95,13 +93,7 @@ namespace CarsDemo
 
         }
 
-        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex != GridViewCars.EditIndex)
-            {
-                (e.Row.Cells[2].Controls[2] as LinkButton).Attributes["onclick"] = "return confirm('Do you want to delete this row?');";
-            }
-        }
+       
 
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -116,9 +108,19 @@ namespace CarsDemo
             int CarID = Convert.ToInt32(GridViewCars.DataKeys[e.RowIndex].Values[0]);
             string manufacturer = (row.FindControl("Manufacturer") as TextBox).Text;
             string model = (row.FindControl("Model") as TextBox).Text;
+            string fuel = (row.FindControl("Fuel") as TextBox).Text;
+            string date = (row.FindControl("Date") as TextBox).Text;
+            bool isNew = (row.FindControl("IsNew") as CheckBox).Checked;
+            int mileage = Int32.Parse((row.FindControl("Mileage") as TextBox).Text);
+
+
 
             carlist.Find(c => c.CarID == CarID).Manufacturer = manufacturer;
             carlist.Find(c => c.CarID == CarID).Model = model;
+            carlist.Find(c => c.CarID == CarID).Fuel = fuel;
+            carlist.Find(c => c.CarID == CarID).Date = DateTime.Parse(date);
+            carlist.Find(c => c.CarID == CarID).IsNew = isNew;
+            carlist.Find(c => c.CarID == CarID).Mileage = mileage;
 
             GridViewCars.EditIndex = -1;
             GridViewCars.DataSource = carlist;

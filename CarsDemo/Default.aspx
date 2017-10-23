@@ -58,23 +58,10 @@
     <br />  
     <br />  
 
-<%--    <asp:gridview id="GridViewCars" runat="server" AutoGenerateColumns="false" OnRowEditing="OnRowEditing" OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" DataKeyNames="CarID" backcolor="White" bordercolor="#E7E7FF"
-    borderstyle="None" borderwidth="1px" cellpadding="3" font-names="Calibri" font-size="Larger"
-    gridlines="Horizontal">
-<AlternatingRowStyle BackColor="#F7F7F7" />
-<FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-<HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-<PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-<RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-<SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-<SortedAscendingCellStyle BackColor="#F4F4FD" />
-<SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-<SortedDescendingCellStyle BackColor="#D8D8F0" />
-<SortedDescendingHeaderStyle BackColor="#3E3277" />
-</asp:gridview>--%>
+
 
     <asp:GridView ID="GridViewCars" runat="server" AutoGenerateColumns="false" DataKeyNames="CarID"
-OnRowDataBound="OnRowDataBound" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+ OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
 OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added.">
 <Columns>
     <asp:TemplateField HeaderText="Manufacturer" ItemStyle-Width="150">
@@ -93,6 +80,43 @@ OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" EmptyDataText="No re
             <asp:TextBox ID="Model" runat="server" Text='<%# Eval("Model") %>'></asp:TextBox>
         </EditItemTemplate>
     </asp:TemplateField>
+
+     <asp:TemplateField HeaderText="Fuel" ItemStyle-Width="150">
+        <ItemTemplate>
+            <asp:Label ID="lblFuel" runat="server" Text='<%# Eval("Fuel") %>'></asp:Label>
+        </ItemTemplate>
+        <EditItemTemplate>
+            <asp:TextBox ID="Fuel" runat="server" Text='<%# Eval("Fuel") %>'></asp:TextBox>
+        </EditItemTemplate>
+    </asp:TemplateField>
+
+         <asp:TemplateField HeaderText="Date" ItemStyle-Width="150">
+        <ItemTemplate>
+            <asp:Label ID="lblDate" runat="server" Text='<%# Eval("Date") %>'></asp:Label>
+        </ItemTemplate>
+        <EditItemTemplate>
+            <asp:TextBox ID="Date" runat="server" Text='<%# Eval("Date") %>'></asp:TextBox>
+        </EditItemTemplate>
+    </asp:TemplateField>
+
+         <asp:TemplateField HeaderText="New" ItemStyle-Width="150">
+        <ItemTemplate>
+            <asp:Label ID="lblIsNew" runat="server" Text='<%# Eval("IsNew") %>'></asp:Label>
+        </ItemTemplate>
+        <EditItemTemplate>
+            <asp:CheckBox ID="IsNew" runat="server" Text='<%# Eval("IsNew") %>'></asp:CheckBox>
+        </EditItemTemplate>
+    </asp:TemplateField>
+
+         <asp:TemplateField HeaderText="Mileage" ItemStyle-Width="150">
+        <ItemTemplate>
+            <asp:Label ID="lblMileage" runat="server" Text='<%# Eval("Mileage") %>'></asp:Label>
+        </ItemTemplate>
+        <EditItemTemplate>
+            <asp:TextBox ID="Mileage" runat="server" Text='<%# Eval("Mileage") %>'></asp:TextBox>
+        </EditItemTemplate>
+    </asp:TemplateField>
+
     <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" ItemStyle-Width="150"/>
 </Columns>
 </asp:GridView>
