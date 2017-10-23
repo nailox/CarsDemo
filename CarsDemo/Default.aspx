@@ -6,8 +6,8 @@
     <br />
     <br />
 
-    <asp:Label id="labelManufactorer" AssociatedControlId="Manufactorer" Text="Manufacturer:" runat="server" />
-    <asp:DropDownList ID="Manufactorer" runat="server"></asp:DropDownList>
+    <asp:Label id="labelManufacturer" AssociatedControlId="Manufacturer" Text="Manufacturer:" runat="server" />
+    <asp:DropDownList ID="Manufacturer" runat="server"></asp:DropDownList>
     <br />
     <br />
 
@@ -19,9 +19,7 @@
 
 
 
-
     <asp:RadioButton ID="GasolineFuel" Text="Gasoline" GroupName="Fuel" runat="server" />
-
 
 
    
@@ -60,7 +58,7 @@
     <br />  
     <br />  
 
-    <asp:gridview id="GridViewCars" runat="server" backcolor="White" bordercolor="#E7E7FF"
+<%--    <asp:gridview id="GridViewCars" runat="server" AutoGenerateColumns="false" OnRowEditing="OnRowEditing" OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" DataKeyNames="CarID" backcolor="White" bordercolor="#E7E7FF"
     borderstyle="None" borderwidth="1px" cellpadding="3" font-names="Calibri" font-size="Larger"
     gridlines="Horizontal">
 <AlternatingRowStyle BackColor="#F7F7F7" />
@@ -73,6 +71,45 @@
 <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
 <SortedDescendingCellStyle BackColor="#D8D8F0" />
 <SortedDescendingHeaderStyle BackColor="#3E3277" />
-</asp:gridview>
+</asp:gridview>--%>
+
+    <asp:GridView ID="GridViewCars" runat="server" AutoGenerateColumns="false" DataKeyNames="CarID"
+OnRowDataBound="OnRowDataBound" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit"
+OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" EmptyDataText="No records has been added.">
+<Columns>
+    <asp:TemplateField HeaderText="Manufacturer" ItemStyle-Width="150">
+        <ItemTemplate>
+            <asp:Label ID="lblManufacturer" runat="server" Text='<%# Eval("Manufacturer") %>'></asp:Label>
+        </ItemTemplate>
+        <EditItemTemplate>
+            <asp:TextBox ID="Manufacturer" runat="server" Text='<%# Eval("Manufacturer") %>'></asp:TextBox>
+        </EditItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Model" ItemStyle-Width="150">
+        <ItemTemplate>
+            <asp:Label ID="lblModel" runat="server" Text='<%# Eval("Model") %>'></asp:Label>
+        </ItemTemplate>
+        <EditItemTemplate>
+            <asp:TextBox ID="Model" runat="server" Text='<%# Eval("Model") %>'></asp:TextBox>
+        </EditItemTemplate>
+    </asp:TemplateField>
+    <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" ItemStyle-Width="150"/>
+</Columns>
+</asp:GridView>
+<%--<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse">
+<tr>
+    <td style="width: 150px">
+       Manufacturer:<br />
+        <asp:TextBox ID="Manufacturer" runat="server" Width="140" />
+    </td>
+    <td style="width: 150px">
+        Country:<br />
+        <asp:TextBox ID="txtCountry" runat="server" Width="140" />
+    </td>
+    <td style="width: 100px">
+        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="Insert" />
+    </td>
+</tr>
+</table>--%>
 
 </asp:Content>

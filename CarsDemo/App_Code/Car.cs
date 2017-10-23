@@ -8,13 +8,10 @@ namespace CarsDemo.App_Code
 {
     public class Car
     {
-      //  private string Manufacturer;
-      ////  private string Model;
-      //  private string Fuel;
-      //  private DateTime Date;
-      //  private bool IsNew;
-      //  private int Mileage;
 
+        static int nrOfInstances = 1;
+
+        public int CarID { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }
         public string Fuel { get; set; }
@@ -24,12 +21,16 @@ namespace CarsDemo.App_Code
         public int Mileage { get; set; }
         public Car(string Manufacturer, string Model, string Fuel, DateTime Date, bool IsNew, int Mileage)
         {
+            this.CarID = nrOfInstances;
+            nrOfInstances++;
             this.Manufacturer = Manufacturer;
             this.Model = Model;
             this.Fuel = Fuel;
             this.Date = Date;
             this.IsNew = IsNew;
             this.Mileage = Mileage;
+
+            
         }
 
        
