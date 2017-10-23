@@ -24,9 +24,8 @@ namespace CarsDemo
                 Manufacturer.Items.Insert(2, new ListItem("Porsche", "Porsche"));
                 Manufacturer.Items.Insert(3, new ListItem("Opel", "Opel"));
 
-                Model.MaxLength = 200;
-                Date.MaxLength = 10;
                 IsNew.Checked = true;
+                
 
                 GridViewCars.DataSource = carlist;
                 GridViewCars.DataBind();
@@ -93,7 +92,8 @@ namespace CarsDemo
 
         }
 
-       
+   
+
 
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {

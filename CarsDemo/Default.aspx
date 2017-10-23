@@ -12,17 +12,14 @@
     <br />
 
     <asp:Label id="labelModel" AssociatedControlId="Model" Text="Model" runat="server" />
-    <asp:TextBox ID="Model" runat="server"></asp:TextBox>
+    <asp:TextBox ID="Model" MaxLength="200" runat="server"></asp:TextBox>
 
     <br />
     <br />
-
 
 
     <asp:RadioButton ID="GasolineFuel" Text="Gasoline" GroupName="Fuel" runat="server" />
 
-
-   
     <asp:RadioButton ID="DieselFuel" Text="Diesel" GroupName="Fuel" runat="server" />
 
     <asp:RadioButton ID="GasFuel" Text="Gas" GroupName="Fuel" runat="server" />
@@ -30,7 +27,7 @@
     <br />
 
        <asp:Label id="labelDate" AssociatedControlId="Date" Text="Date" runat="server" />
-    <asp:TextBox ID="Date" runat="server"></asp:TextBox>
+    <asp:TextBox ID="Date" MaxLength="10" runat="server"></asp:TextBox>
 
     <asp:RegularExpressionValidator ID="dateValRegex" runat="server" ControlToValidate="Date" ErrorMessage="Please Enter a valid date in the format (mm/dd/yyyy)" ValidationExpression="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$"></asp:RegularExpressionValidator>
     <br />
@@ -77,7 +74,7 @@ OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" EmptyDataText="No re
             <asp:Label ID="lblModel" runat="server" Text='<%# Eval("Model") %>'></asp:Label>
         </ItemTemplate>
         <EditItemTemplate>
-            <asp:TextBox ID="Model" runat="server" Text='<%# Eval("Model") %>'></asp:TextBox>
+            <asp:TextBox ID="Model" runat="server" MaxLength="200" Text='<%# Eval("Model") %>'></asp:TextBox>
         </EditItemTemplate>
     </asp:TemplateField>
 
@@ -95,7 +92,8 @@ OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" EmptyDataText="No re
             <asp:Label ID="lblDate" runat="server" Text='<%# Eval("Date") %>'></asp:Label>
         </ItemTemplate>
         <EditItemTemplate>
-            <asp:TextBox ID="Date" runat="server" Text='<%# Eval("Date") %>'></asp:TextBox>
+            <asp:TextBox ID="Date" runat="server" MaxLength="10" Text='<%# Eval("Date") %>'></asp:TextBox>
+             <asp:RegularExpressionValidator ID="dateValRegex" runat="server" ControlToValidate="Date" ErrorMessage="Please Enter a valid date in the format (mm/dd/yyyy)" ValidationExpression="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$"></asp:RegularExpressionValidator>
         </EditItemTemplate>
     </asp:TemplateField>
 
@@ -114,26 +112,15 @@ OnRowUpdating="OnRowUpdating" OnRowDeleting="OnRowDeleting" EmptyDataText="No re
         </ItemTemplate>
         <EditItemTemplate>
             <asp:TextBox ID="Mileage" runat="server" Text='<%# Eval("Mileage") %>'></asp:TextBox>
+              <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
+ ControlToValidate="Mileage" ErrorMessage="Value must be a whole number" />
         </EditItemTemplate>
+
     </asp:TemplateField>
 
     <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" ItemStyle-Width="150"/>
 </Columns>
 </asp:GridView>
-<%--<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse">
-<tr>
-    <td style="width: 150px">
-       Manufacturer:<br />
-        <asp:TextBox ID="Manufacturer" runat="server" Width="140" />
-    </td>
-    <td style="width: 150px">
-        Country:<br />
-        <asp:TextBox ID="txtCountry" runat="server" Width="140" />
-    </td>
-    <td style="width: 100px">
-        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="Insert" />
-    </td>
-</tr>
-</table>--%>
+
 
 </asp:Content>
